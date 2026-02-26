@@ -23,6 +23,6 @@ public class UIButtons : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("gameplay");
     }
 }

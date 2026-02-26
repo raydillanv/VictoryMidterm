@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Enemy : MonoBehaviour
 {
 
@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     public GameObject YouWin;
     
     public Animator anim;
+    
+    public TMP_Text HealthText;
 
 
 
@@ -43,7 +45,7 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         healthBar.value = health;
-
+        HealthText.text = "Health: " + health;
         if (health <= 0)
         {
             if (!PlayerRef.isDead)
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour
                 YouWin.SetActive(true); 
                 anim.SetBool("isDead", true);
                 anim.StopPlayback();
+                HealthText.text = "Health: " + "0";
             }
 
         }

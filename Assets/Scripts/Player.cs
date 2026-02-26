@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public bool isDead = false;
     
     public GameObject YouLose;
+    public TMP_Text HealthText;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,12 +45,14 @@ public class Player : MonoBehaviour
     {
         health -= damage;
         healthBar.value = health;
+        HealthText.text = "Health: " + health;
 
         if (health <= 0)
         {
             isDead = true;
             HealthFill.SetActive(false);
             YouLose.SetActive(true);
+            HealthText.text = "Health: " + "0";
         }
     }
     
