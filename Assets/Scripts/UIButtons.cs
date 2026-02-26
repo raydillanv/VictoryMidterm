@@ -20,4 +20,9 @@ public class UIButtons : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void StartButton()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 }

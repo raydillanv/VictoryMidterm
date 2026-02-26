@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     
     public GameObject YouWin;
     
+    public Animator anim;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,20 +46,29 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            isDead = true;
-            HealthFill.SetActive(false);
-            YouWin.SetActive(true);
+            if (!PlayerRef.isDead)
+            {
+                isDead = true;
+                HealthFill.SetActive(false);
+                YouWin.SetActive(true); 
+                anim.SetBool("isDead", true);
+                anim.StopPlayback();
+            }
+
         }
     }
 
     public void DealDamage()
     {
         PlayerRef.TakeDamage(damage);
+
+        
     }
 
     public void PassiveHeal()
     {
         health += 20f;
         healthBar.value = health;
+
     }
 }
